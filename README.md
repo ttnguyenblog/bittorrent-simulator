@@ -1,18 +1,10 @@
-# P2P File Sharing
-1. no always-on server
-2. arbitrary end systems directly communicate
-3. peers request service from other peers, provide service in return to other peers
-     - self scalability – new peers bring new service capacity, as well as new service demands
-4. peers are intermittently connected and change IP addresses
-    - complex management
-<img src="https://github.com/Shantanu48114860/P2P-File-sharing/blob/master/images/p2p_pic.png" width="250" height="300">
+# Mô phỏng mạng ngang hàng BitTorrent
+## Chuẩn bị
+- Máy ảo VMware cài hệ điều hành Ubuntu.
+- Môi trường chạy java.
 
 # Programming Environment
   Java
-  
-# Requirement
-Requirement is specified in the [Project2.pdf](https://github.com/Shantanu48114860/P2P-File-sharing/blob/master/Project2.pdf) 
-and [Project2.pptx](https://github.com/Shantanu48114860/P2P-File-sharing/blob/master/Project2.pptx) file.
 
 # Compile
 <b>File owner</b> <br/>
@@ -38,32 +30,27 @@ javac Peer5.java <br/>
 <b>Peer6</b> <br/>
 cd Peer6 <br/>
 javac Peer6.java 
+
+- Kết quả chuẩn bị:
+<img source="https://ttnguyen.net/wp-content/uploads/2023/11/chuan-bi-chay-chuong-trinh-mo-phong-bittorrent.jpg">
  
-# How to run
-1. Start the file owner process, giving a listening port.
-2. Start five peer processes as:
-<b>file owner, peer itself, download neighbor(another peer’s port) </b>
-3. Each peer connects to the server’s listening port. The latter creates a new thread to upload one or several file chunks to the peer, while its main thread goes back to
-listening for new peers.
-4. After receiving chunk(s) from the file owner, the peer stores them as separate file(s)
-and creates a summary file, listing the IDs of the chunks it has.
-5. The peer then proceeds with two new threads, with one thread listening to its upload
-neighbor to which it will upload file chunks, and the other thread connecting to its
-download neighbor.
-6. The peer requests for the chunk ID list from the download neighbor, compares with
-its own to find the missing ones, and randomly requests a missing chunk from the neighbor. In the meantime, it sends its own chunk ID list to its upload neighbor, and upon request uploads chunks to the neighbor.
-7. After a peer has all file chunks, it combines them for a single file.
-8. A peer MUST output its activity to its console whenever it receives a chunk, sends a chunk, receives a chunk ID list, sends out a chunk ID list, requests for chunks, or
-receives such a request.
+# Phân tích hoạt động
+– Tạo 2 chương trình:
 
-**A demo video can be found at [here](https://youtu.be/yf0M3uXAPNc)**
+Phân tích hoạt động:
 
-<img src="https://github.com/Shantanu48114860/P2P-File-sharing/blob/master/Demo_Startup.png" width="1000" height="750">
+1. Khởi động Peer1 Owner, cung cấp một cổng.
+2. Khởi động 5 máy ngang hàng: Peer 2, Peer 3, Peer 4, Peer 5, Peer 6. Mỗi ngang hàng có 3 cổng: cổng máy chủ, cổng chính nó, cổng ngang hàng khác.
+3. Mỗi ngang hàng kết nối với chủ sở hữu tệp. 1 cổng sẽ tải lên các mảnh cho ngang hàng, trong khi cổng còn lại sẽ lắng nghe các ngang hàng mới.
+4. Sau khi nhận được các mảnh từ chủ sở hữu tệp. Ngang hàng sẽ lưu chúng dưới dạng các tệp riêng biệt, liệt kê ID các mảnh mà nó có.
+5. Sau đó, ngang hàng tiến hành với hai luồng mới, với một luồng lắng nghe hàng xóm tải lên của nó và luồng còn lại kết nối với hàng xóm tải xuống của nó.
+6. Ngang hàng yêu cầu danh sách ID các mảnh từ hàng xóm tải xuống, so sánh với danh sách của riêng nó để tìm các phân đoạn còn thiếu và yêu cầu ngẫu nhiên một mảnh còn thiếu từ hàng xóm.
+7. Trong khi đó, nó sẽ gửi danh sách ID phân đoạn của riêng mình cho hàng xóm tải lên của mình và khi được yêu cầu sẽ tải lên các phân đoạn lên hàng xóm.
+8. Sau khi một ngang hàng có tất cả các phân đoạn tệp, nó sẽ kết hợp chúng thành một tệp duy nhất.
+9. Các mạng ngang hàng kết nối với nhau và trao đổi danh sách ID các mảnh. Sau đó, chúng yêu cầu và gửi các mảnh cho nhau cho đến khi tất cả các mạng ngang hàng đều có tất cả các mảnh và có thể kết hợp chúng thành một tệp duy nhất.
 
-# Post Completion:
-After completion the file will be downloaded to each of the peer. Plus inside each Peer on Peer<id>Dir folder will be created where all the file chunks and a summary file which contains the chunk ids that the peer got from the owner will be present.
-A detailed demo video can be found as <b>demo.mp4</b> file.
-<img src="https://github.com/Shantanu48114860/P2P-File-sharing/blob/master/Demo_Complete.png" width="1000" height="750">
+# Kết quả chạy thử
+<img source="https://ttnguyen.net/wp-content/uploads/2023/11/ket-qua-chay-chuong-trinh-mo-phong-bittorrent.jpg">
      
 
 
