@@ -32,7 +32,7 @@ cd Peer6 <br/>
 javac Peer6.java 
 
 - Kết quả chuẩn bị:
-<img source="https://ttnguyen.net/wp-content/uploads/2023/11/chuan-bi-chay-chuong-trinh-mo-phong-bittorrent.jpg">
+<img src="https://ttnguyen.net/wp-content/uploads/2023/11/chuan-bi-chay-chuong-trinh-mo-phong-bittorrent.jpg" width="1000" height="750">
  
 # Phân tích hoạt động
 – Tạo 2 chương trình:
@@ -50,7 +50,7 @@ Phân tích hoạt động:
 9. Các mạng ngang hàng kết nối với nhau và trao đổi danh sách ID các mảnh. Sau đó, chúng yêu cầu và gửi các mảnh cho nhau cho đến khi tất cả các mạng ngang hàng đều có tất cả các mảnh và có thể kết hợp chúng thành một tệp duy nhất.
 
 # Kết quả chạy thử
-<img source="https://ttnguyen.net/wp-content/uploads/2023/11/ket-qua-chay-chuong-trinh-mo-phong-bittorrent.jpg">
+<img src="https://ttnguyen.net/wp-content/uploads/2023/11/ket-qua-chay-chuong-trinh-mo-phong-bittorrent.jpg" width="1000" height="750">
      
 
 
