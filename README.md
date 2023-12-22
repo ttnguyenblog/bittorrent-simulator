@@ -52,7 +52,7 @@ Phân tích hoạt động:
 # Kết quả chạy thử
 <img src="https://ttnguyen.net/wp-content/uploads/2023/11/ket-qua-chay-chuong-trinh-mo-phong-bittorrent.jpg" width="1000" height="750">
 
-Chi tiết: [Mô phỏng mạng BitTorrent](https://ttnguyen.net/bittorrent-la-gi/)
+Chi tiết: [mạng ngang hàng BitTorrent](https://ttnguyen.net/bittorrent-la-gi/)
      
 
 
